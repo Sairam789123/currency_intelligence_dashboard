@@ -5,6 +5,11 @@ Project Description -
 
 This web application analyzes currency exchange rates using a public API. It allows users to view and interact with currency data to understand trends and relationships between different currencies.
 
+
+Purpose - 
+
+The purpose of this project is to help users better understand how different currencies behave instead of just converting values. This application allows users to explore exchange rates, observe how they change over time, and compare different currencies. Overall, the project focuses on turning raw currency data into useful insights that can help users understand the global currency system in a simple way.
+
 API Used - 
 
 Frankfurter API
