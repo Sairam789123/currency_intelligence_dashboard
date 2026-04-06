@@ -13,14 +13,27 @@
 
   <section class="hero">
     <h1>Understand Global Currency Trends</h1>
-    <p>Analyze exchange rates and explore insights from real-time data</p>
+    <p>Analyze exchange rates and explore insights from real-time data</p> </section>
 
   <main class="container">
     <h2 class="section-title">Live Exchange Rates</h2>
+        <div class="base-currency">
+          <p>Base Currency</p>
+          <input id="base-code" value="USD" />
+          <span id="base-rate">1.00</span>
+        </div>
+  
+    <div class="controls">
+  <input 
+    type="text" 
+    id="search" 
+    placeholder="Search currency..." 
+  />
 
-    <button onclick="fetchCurrencies()" class="refresh-btn">
-    Refresh Rates
-    </button>
+  <button onclick="fetchCurrencies()" class="refresh-btn">
+    Refresh
+  </button>
+</div>
 
     <div id="loading">Fetching latest data...</div>
 
