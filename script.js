@@ -74,6 +74,29 @@ baseInput.addEventListener("change", function () {
   fetchCurrencies();
 });
 
+const sortSelect = document.getElementById("sort-select");
+
+sortSelect.addEventListener("change", function () {
+  let sorted = [...allCurrencies]; // copy original data
+
+  if (sortSelect.value === "high") {
+    // High → Low
+    sorted.sort((a, b) => b[1] - a[1]);
+
+  } else if (sortSelect.value === "low") {
+    // Low → High
+    sorted.sort((a, b) => a[1] - b[1]);
+
+  
+
+  } else {
+    // Default (original order)
+    sorted = [...allCurrencies];
+  }
+
+  displayCurrencies(sorted);
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   fetchCurrencies();
 });

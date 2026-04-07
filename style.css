@@ -167,3 +167,17 @@ body {
   font-weight: bold;
   width: 80px;
 }
+.sort-controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#sort-select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #30363d;
+  background: #161b22;
+  color: #e6edf3;
+  cursor: pointer;
+}
