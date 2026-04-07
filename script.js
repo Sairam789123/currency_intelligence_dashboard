@@ -1,5 +1,6 @@
 const container = document.getElementById("currency-container");
 const loading = document.getElementById("loading");
+let visibleCount = 12;
 let allCurrencies = []; 
 async function fetchCurrencies() {
     console.log("Button clicked, fetching data...");
@@ -8,6 +9,7 @@ async function fetchCurrencies() {
 
     const response = await fetch(`https://open.er-api.com/v6/latest/${base}`);
     const data = await response.json();
+    visibleCount = 12;
 
     document.getElementById("base-code").value = data.base_code;
 
@@ -24,6 +26,12 @@ async function fetchCurrencies() {
   loading.innerText = "Error loading data";
 }
 }
+const viewMoreBtn = document.getElementById("view-more");
+
+viewMoreBtn.addEventListener("click", function () {
+  visibleCount += 12;
+  displayCurrencies(allCurrencies);
+});
 
 function displayCurrencies(data) {
   container.innerHTML = "";
@@ -34,7 +42,7 @@ function displayCurrencies(data) {
   "AED", "NZD"
 ];
 
-const sortedData = data.sort((a, b) => {
+const sortedData = [...data].sort((a, b) => {
   const aPriority = priorityCurrencies.includes(a[0]) ? 0 : 1;
   const bPriority = priorityCurrencies.includes(b[0]) ? 0 : 1;
   return aPriority - bPriority;
@@ -44,7 +52,7 @@ const base = document.getElementById("base-code").value.toUpperCase();
 
 const filteredData = sortedData.filter(([currency]) => currency !== base);
 
-filteredData.slice(0, 12).forEach(([currency, rate]) => {
+filteredData.slice(0, visibleCount).forEach(([currency, rate]) =>  {
     const div = document.createElement("div");
     div.className = "card";
 
@@ -55,6 +63,12 @@ filteredData.slice(0, 12).forEach(([currency, rate]) => {
 
     container.appendChild(div);
   });
+
+if (visibleCount >= filteredData.length) {
+  viewMoreBtn.style.display = "none";
+} else {
+  viewMoreBtn.style.display = "block";
+}
 }
 
 const searchInput = document.getElementById("search");
@@ -65,7 +79,7 @@ searchInput.addEventListener("input", function () {
   const filtered = allCurrencies.filter(([currency]) =>
     currency.includes(value)
   );
-
+  visibleCount = 12;
   displayCurrencies(filtered);
 });
 const baseInput = document.getElementById("base-code");
@@ -77,20 +91,20 @@ baseInput.addEventListener("change", function () {
 const sortSelect = document.getElementById("sort-select");
 
 sortSelect.addEventListener("change", function () {
-  let sorted = [...allCurrencies]; // copy original data
+  let sorted = [...allCurrencies]; 
 
   if (sortSelect.value === "high") {
-    // High → Low
+    
     sorted.sort((a, b) => b[1] - a[1]);
 
   } else if (sortSelect.value === "low") {
-    // Low → High
+    
     sorted.sort((a, b) => a[1] - b[1]);
 
   
 
   } else {
-    // Default (original order)
+    
     sorted = [...allCurrencies];
   }
 

@@ -181,3 +181,18 @@ body {
   color: #e6edf3;
   cursor: pointer;
 }
+
+#view-more {
+  display: block;
+  margin: 30px auto;
+  padding: 10px 15px;
+  border: 1px solid #30363d;
+  background: #161b22;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#view-more:hover {
+  border-color: #58a6ff;
+}
