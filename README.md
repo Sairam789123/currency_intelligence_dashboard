@@ -15,11 +15,12 @@ https://open.er-api.com/v6/latest/USD
 
 Features
 
+Live exchange rate data
 Search currencies (using `filter()`)
+Sort currencies (High → Low, Low → High)
 Dynamic base currency selection
-Automatic update of exchange rates based on selected base
-Filtered currency display (excluding base currency)
-Clean and responsive UI
+View more functionality (loads additional currencies)
+Clean and simple UI
 
 Technologies Used
 
@@ -32,3 +33,10 @@ Setup Instructions
 1. Clone the repository
 2. Open the project folder
 3. Open `index.html` in a browser
+
+Progress
+
+Milestone 1: Completed
+Milestone 2: Completed
+Milestone 3: Completed
+Milestone 4: Completed
